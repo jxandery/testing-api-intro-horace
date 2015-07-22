@@ -1,3 +1,5 @@
+Stopped tutorial at Step 3: Production Mocking with JSON Fixtures on exercise "Production User Data" (right before Step 4: Transit-Layer mocking with VCR and Webmock)
+
 ## Twitter Demo
 
 This application is a simplistic example of consuming the Twitter
