@@ -19,4 +19,18 @@ class TweetStreamsControllerTest < ActionController::TestCase
     assert_select "li.tweet"
   end
 
+  test "stubs request using reail production data" do
+    @controller.twitter_client.expects(:user_timeline).with("j3").returns(tweet_data)
+
+    post :create, :twitter_handle => "j3"
+    assert_response :success
+    assert_not_nil assigns(:tweets)
+    assert_select "li.tweet"
+  end
+
+  def tweet_data
+    JSON.parse(File.read(File.join(Rails.root, "test", "fixtures", "tweet_data.json"))).map do |hash|
+      Hashie::Mash.new(hash)
+    end
+  end
 end
